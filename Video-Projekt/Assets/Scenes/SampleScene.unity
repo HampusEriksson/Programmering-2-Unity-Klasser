@@ -371,7 +371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81940686a8cbd3d48800be0de330d1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 155360435611743849, guid: d451969596984d84c8a48ce2f25f3181, type: 3}
+  enemyPrefabs:
+  - {fileID: 155360435611743849, guid: 027a3e0291ffaba429bf1e984fb40363, type: 3}
+  - {fileID: 4126557296604626648, guid: 7cac8d8e3bdf5084d91fcfb3c494f9cd, type: 3}
+  powerUps:
+  - {fileID: 6590053966663038605, guid: 5c5dc939309ab4341ae83763ad70984e, type: 3}
 --- !u!4 &1616458032
 Transform:
   m_ObjectHideFlags: 0

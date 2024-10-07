@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
+    public GameObject[] powerUps;
     private float repeatRate = 2f;
     private float limitX = 10;
     private float limitY = 5;
@@ -12,6 +13,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnEnemy", 0.5f, repeatRate);
+        SpawnPowerup();
     }
 
     // Update is called once per frame
@@ -22,7 +24,14 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, RandomPosition(), enemyPrefab.transform.rotation);
+        GameObject prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        Instantiate(prefabToSpawn, RandomPosition(), prefabToSpawn.transform.rotation);
+    }
+
+    void SpawnPowerup()
+    {
+        GameObject prefabToSpawn = powerUps[Random.Range(0, powerUps.Length)];
+        Instantiate(prefabToSpawn, RandomPosition(), prefabToSpawn.transform.rotation);
     }
 
     Vector3 RandomPosition()

@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Attribut
     private float speed = 7f;
+    private float powerupTime = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("GAME OVER");
-        speed = 0f;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("GAME OVER");
+            speed = 0f;
+        }
+
+        if (collision.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(collision.gameObject);
+            SpeedBoost();
+        }
+        
+    }
+
+    private void SpeedBoost()
+    {
+        speed *= 2;
+        Invoke("ResetSpeed", powerupTime);
+    }
+
+    private void ResetSpeed()
+    {
+        speed = 7f;
     }
 }
